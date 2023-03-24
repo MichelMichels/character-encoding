@@ -5,45 +5,63 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MichelMichels.CharacterEncoding"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Character encoder"
     Width="800"
     Height="450"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
     mc:Ignorable="d">
     <Border Padding="16">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="16" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <StackPanel>
+            <DockPanel Margin="0,0,0,8">
+                <TextBlock
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="Character encoder" />
 
-            <DockPanel Grid.Column="0">
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Text="Created by Michel Michels" />
+            </DockPanel>
+
+
+            <StackPanel Margin="0,0,0,16">
                 <TextBlock
                     Margin="0,0,0,8"
                     DockPanel.Dock="Top"
                     FontWeight="Bold"
                     Text="Input" />
 
-                <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
-                    <TextBlock
-                        Width="80"
-                        VerticalAlignment="Center"
-                        Text="Mode:" />
-                    <ComboBox x:Name="cbInputMode" SelectionChanged="InputModeChanged" />
-                </DockPanel>
+                <WrapPanel Margin="0,0,0,8">
+                    <DockPanel Margin="0,0,16,0">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Text="Mode:" />
+                        <ComboBox
+                            x:Name="cbInputMode"
+                            Width="128"
+                            SelectionChanged="InputModeChanged" />
+                    </DockPanel>
 
-                <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
-                    <TextBlock
-                        Width="80"
-                        VerticalAlignment="Center"
-                        Text="Encoding:" />
-                    <ComboBox x:Name="cbInputEncoding" SelectionChanged="InputEncodingChanged" />
-                </DockPanel>
+                    <DockPanel Margin="0,0,16,0" DockPanel.Dock="Top">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Text="Encoding:" />
+                        <ComboBox
+                            x:Name="cbInputEncoding"
+                            Width="128"
+                            SelectionChanged="InputEncodingChanged" />
+                    </DockPanel>
+
+                </WrapPanel>
 
 
                 <RichTextBox
                     x:Name="tbInput"
-                    Grid.Column="0"
+                    Height="128"
                     AcceptsReturn="True"
                     FontFamily="Consolas"
                     TextChanged="tbInput_TextChanged">
@@ -53,37 +71,45 @@
                         </Style>
                     </RichTextBox.Resources>
                 </RichTextBox>
-            </DockPanel>
+            </StackPanel>
 
-
-            <DockPanel Grid.Column="2">
+            <StackPanel>
                 <TextBlock
                     Margin="0,0,0,8"
                     DockPanel.Dock="Top"
                     FontWeight="Bold"
                     Text="Output" />
 
+                <WrapPanel Margin="0,0,0,8">
+                    <DockPanel Margin="0,0,16,0">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Text="Mode:" />
+
+                        <ComboBox
+                            x:Name="cbOutputMode"
+                            Width="128"
+                            SelectionChanged="OutputModeChanged" />
+                    </DockPanel>
+
+                    <DockPanel>
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Text="Encoding:" />
+
+                        <ComboBox
+                            x:Name="cbOutputEncoding"
+                            Width="128"
+                            SelectionChanged="OutputEncodingChanged" />
+                    </DockPanel>
+                </WrapPanel>
+
+
                 <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
                     <TextBlock
-                        Width="80"
-                        VerticalAlignment="Center"
-                        Text="Mode:" />
-
-                    <ComboBox x:Name="cbOutputMode" SelectionChanged="OutputModeChanged" />
-                </DockPanel>
-
-                <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
-                    <TextBlock
-                        Width="80"
-                        VerticalAlignment="Center"
-                        Text="Encoding:" />
-
-                    <ComboBox x:Name="cbOutputEncoding" SelectionChanged="OutputEncodingChanged" />
-                </DockPanel>
-
-                <DockPanel Margin="0,0,0,8" DockPanel.Dock="Top">
-                    <TextBlock
-                        Width="80"
+                        Margin="0,0,8,0"
                         VerticalAlignment="Center"
                         Text="Font size:" />
 
@@ -97,13 +123,13 @@
 
                 <TextBox
                     x:Name="tbOutput"
+                    Height="128"
                     FontFamily="Arial Unicode MS"
                     FontSize="{Binding ElementName=fontSizeSlider, Path=Value}"
                     IsReadOnly="True"
                     TextWrapping="Wrap" />
-            </DockPanel>
+            </StackPanel>
 
-
-        </Grid>
+        </StackPanel>
     </Border>
 </Window>

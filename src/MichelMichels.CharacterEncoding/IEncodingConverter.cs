@@ -16,7 +16,7 @@ namespace MichelMichels.CharacterEncoding
         /// <param name="inputEncoding">Character encoding of the input.</param>
         /// <param name="outputEncoding">Character encoding of the output.</param>
         /// <returns>A byte array encoded with the outputEncoding.</returns>
-        byte[] Convert(byte[] bytes, Encoding inputEncoding, Encoding outputEncoding);
+        byte[] ConvertBytes(byte[] bytes, Encoding inputEncoding, Encoding outputEncoding);
 
        
         /// <summary>
@@ -25,6 +25,6 @@ namespace MichelMichels.CharacterEncoding
         /// <param name="input">UTF-16 string</param>
         /// <param name="outputEncoding">Character encoding of the output.</param>
         /// <returns></returns>
-        byte[] Convert(string input, Encoding outputEncoding);
+        byte[] ConvertString(string input, Encoding outputEncoding);
     }
 }

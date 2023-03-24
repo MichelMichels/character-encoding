@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichelMichels.CharacterEncoding", "MichelMichels.CharacterEncoding\MichelMichels.CharacterEncoding.csproj", "{883D3ACF-08EC-4D5F-8F36-E840C09E9648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MichelMichels.CharacterEncoding", "MichelMichels.CharacterEncoding\MichelMichels.CharacterEncoding.csproj", "{883D3ACF-08EC-4D5F-8F36-E840C09E9648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichelMichels.CharacterEncoding.WPF", "MichelMichels.CharacterEncoding.WPF\MichelMichels.CharacterEncoding.WPF.csproj", "{796CC96E-21A0-41E6-A092-A3BCFC661BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MichelMichels.CharacterEncoding.WPF", "MichelMichels.CharacterEncoding.WPF\MichelMichels.CharacterEncoding.WPF.csproj", "{796CC96E-21A0-41E6-A092-A3BCFC661BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichelMichels.CharacterEncodingTests", "MichelMichels.CharacterEncodingTests\MichelMichels.CharacterEncodingTests.csproj", "{C782926E-BA78-4490-A7FF-887F62D203A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{796CC96E-21A0-41E6-A092-A3BCFC661BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{796CC96E-21A0-41E6-A092-A3BCFC661BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{796CC96E-21A0-41E6-A092-A3BCFC661BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C782926E-BA78-4490-A7FF-887F62D203A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C782926E-BA78-4490-A7FF-887F62D203A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C782926E-BA78-4490-A7FF-887F62D203A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C782926E-BA78-4490-A7FF-887F62D203A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,7 +21,7 @@ namespace MichelMichels.CharacterEncoding.WPF
         private static List<Encoding> encodings = new();
         private readonly IEncodingConverter encodingConverter;
 
-        public enum TextMode
+        public enum InputMode
         {
             Bytes,
             String,
@@ -29,8 +29,8 @@ namespace MichelMichels.CharacterEncoding.WPF
 
         private Encoding currentInputEncoding = Encoding.UTF8;
         private Encoding currentOutputEncoding = Encoding.UTF8;
-        private TextMode currentInputMode = TextMode.Bytes;
-        private TextMode currentOutputMode = TextMode.String;
+        private InputMode currentInputMode = InputMode.Bytes;
+        private InputMode currentOutputMode = InputMode.String;
 
         public MainWindow()
         {
@@ -52,8 +52,8 @@ namespace MichelMichels.CharacterEncoding.WPF
             var flowDocument = new FlowDocument();
             tbInput.Document = flowDocument;
 
-            cbInputMode.ItemsSource = Enum.GetValues(typeof(TextMode)).Cast<TextMode>();
-            cbInputMode.SelectedItem = TextMode.Bytes;
+            cbInputMode.ItemsSource = Enum.GetValues(typeof(InputMode)).Cast<InputMode>();
+            cbInputMode.SelectedItem = InputMode.Bytes;
 
             currentOutputEncoding = encodings.FirstOrDefault() ?? Encoding.UTF8;
             cbOutputEncoding.ItemsSource = encodings;
@@ -62,8 +62,8 @@ namespace MichelMichels.CharacterEncoding.WPF
         }
         private void InitializeOutput()
         {           
-            cbOutputMode.ItemsSource = Enum.GetValues(typeof(TextMode)).Cast<TextMode>();
-            cbOutputMode.SelectedItem = TextMode.Bytes;
+            cbOutputMode.ItemsSource = Enum.GetValues(typeof(InputMode)).Cast<InputMode>();
+            cbOutputMode.SelectedItem = InputMode.Bytes;
 
             currentInputEncoding = encodings.FirstOrDefault() ?? Encoding.UTF8;
             cbInputEncoding.ItemsSource = encodings;
@@ -97,8 +97,8 @@ namespace MichelMichels.CharacterEncoding.WPF
 
             var inputStrings = currentInputMode switch
             {
-                TextMode.Bytes => GetTextFromRichTextBox(tbInput).Replace(" ", "").Split("\r\n"),
-                TextMode.String => GetTextFromRichTextBox(tbInput).Split("\r\n"),
+                InputMode.Bytes => GetTextFromRichTextBox(tbInput).Replace(" ", "").Split("\r\n"),
+                InputMode.String => GetTextFromRichTextBox(tbInput).Split("\r\n"),
                 _ => throw new NotSupportedException(),
             };
 
@@ -128,8 +128,8 @@ namespace MichelMichels.CharacterEncoding.WPF
         {
             return currentOutputMode switch
             {
-                TextMode.Bytes => ByteArrayToString(encodingConverter.Convert(bytes, currentInputEncoding, currentOutputEncoding)),
-                TextMode.String => currentOutputEncoding.GetString(bytes),
+                InputMode.Bytes => ByteArrayToString(encodingConverter.ConvertBytes(bytes, currentInputEncoding, currentOutputEncoding)),
+                InputMode.String => currentOutputEncoding.GetString(bytes),
                 _ => throw new NotSupportedException()
             };
         }
@@ -138,8 +138,8 @@ namespace MichelMichels.CharacterEncoding.WPF
         {
             return currentInputMode switch
             {
-                TextMode.Bytes => Convert.FromHexString(line),
-                TextMode.String => encodingConverter.Convert(line, currentInputEncoding),
+                InputMode.Bytes => Convert.FromHexString(line),
+                InputMode.String => encodingConverter.ConvertString(line, currentInputEncoding),
                 _ => throw new NotSupportedException(),
             };
         }
@@ -174,7 +174,7 @@ namespace MichelMichels.CharacterEncoding.WPF
 
         private void OutputModeChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbOutputMode.SelectedItem is TextMode textMode)
+            if (cbOutputMode.SelectedItem is InputMode textMode)
             {
                 currentOutputMode = textMode;
                 UpdateOutput();
@@ -190,7 +190,7 @@ namespace MichelMichels.CharacterEncoding.WPF
         }
         private void InputModeChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbInputMode.SelectedItem is TextMode selectedMode)
+            if (cbInputMode.SelectedItem is InputMode selectedMode)
             {
                 currentInputMode = selectedMode;
                 UpdateOutput();

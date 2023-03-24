@@ -4,14 +4,14 @@ namespace MichelMichels.CharacterEncoding
 {
     public class EncodingConverter : IEncodingConverter
     {
-        public byte[] Convert(byte[] bytes, Encoding inputEncoding, Encoding outputEncoding)
+        public byte[] ConvertBytes(byte[] bytes, Encoding inputEncoding, Encoding outputEncoding)
         {
             var inputText = inputEncoding.GetString(bytes);            
             
-            return Convert(inputText, outputEncoding);
+            return ConvertString(inputText, outputEncoding);
         }
 
-        public byte[] Convert(string text, Encoding outputEncoding)
+        public byte[] ConvertString(string text, Encoding outputEncoding)
         {
             return outputEncoding.GetBytes(text);
         }     
