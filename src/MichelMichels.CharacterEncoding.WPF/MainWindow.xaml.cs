@@ -53,23 +53,22 @@ namespace MichelMichels.CharacterEncoding.WPF
             tbInput.Document = flowDocument;
 
             cbInputMode.ItemsSource = Enum.GetValues(typeof(InputMode)).Cast<InputMode>();
-            cbInputMode.SelectedItem = InputMode.Bytes;
-
-            currentOutputEncoding = encodings.FirstOrDefault() ?? Encoding.UTF8;
-            cbOutputEncoding.ItemsSource = encodings;
-            cbOutputEncoding.SelectedItem = currentOutputEncoding;
-            cbOutputEncoding.DisplayMemberPath = "EncodingName";
-        }
-        private void InitializeOutput()
-        {           
-            cbOutputMode.ItemsSource = Enum.GetValues(typeof(InputMode)).Cast<InputMode>();
-            cbOutputMode.SelectedItem = InputMode.Bytes;
-
+            cbInputMode.SelectedItem = InputMode.String;
+            
             currentInputEncoding = encodings.FirstOrDefault() ?? Encoding.UTF8;
             cbInputEncoding.ItemsSource = encodings;
             cbInputEncoding.SelectedItem = currentOutputEncoding;
             cbInputEncoding.DisplayMemberPath = "EncodingName";
+        }
+        private void InitializeOutput()
+        {           
+            cbOutputMode.ItemsSource = Enum.GetValues(typeof(InputMode)).Cast<InputMode>();
+            cbOutputMode.SelectedItem = InputMode.String;
 
+            currentOutputEncoding = encodings.FirstOrDefault() ?? Encoding.UTF8;
+            cbOutputEncoding.ItemsSource = encodings;
+            cbOutputEncoding.SelectedItem = currentOutputEncoding;
+            cbOutputEncoding.DisplayMemberPath = "EncodingName";           
         }
         private void InitializeEncodings()
         {
@@ -83,6 +82,7 @@ namespace MichelMichels.CharacterEncoding.WPF
                 Encoding.Unicode,
                 Encoding.ASCII,
                 Encoding.GetEncoding(1252),
+                Encoding.GetEncoding(1255),
             };
         }
 
